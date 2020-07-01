@@ -5,4 +5,8 @@ class Api::ProductsController < ApplicationController
     render "display.json.jb"
   end
 
+  def productdisplay
+    @product = Product.find_by(name:"Wingspan")
+    render "displayproduct.json.jb"
+  end
 end
