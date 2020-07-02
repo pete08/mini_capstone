@@ -9,4 +9,17 @@ class Api::ProductsController < ApplicationController
     @product = Product.find_by(name:"Wingspan")
     render "displayproduct.json.jb"
   end
+
+  def firstproductdisplay
+    @product = Product.first
+    render "firstproduct.json.jb"
+  end
+
+  def displaysegment
+    hi = params['name']
+    @product = Product.find_by(name:hi)
+    render "product_segment.json.jb"
+    # @product = Product.find_by(name:"monopoly")
+
+  end
 end
