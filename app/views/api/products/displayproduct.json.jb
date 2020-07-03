@@ -1,5 +1,0 @@
-{
-product: @product.name,
-price: "$#{@product.price}.00",
-description: @product.description
-}
