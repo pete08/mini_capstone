@@ -18,11 +18,18 @@ class Api::ProductsController < ApplicationController
 
   def update
     @product = Product.find_by(id: params[:id])
-    @product.name = "newgame"
-    @product.price = 16
-    @product.image_url = "catanboardgame.com"
-    @product.description = "A game of land and resource management"
-    @product.save
+    @product.name = params[:name] || @product.name
+    @product.price = params[:price] || @product.price
+    @product.image_url = params[:image_url] || @product.image_url
+    @product.description = params[:description] || @product.description
+    @product.save 
     render "update.json.jb"
   end
+
+  def destroy
+    @product = Product.last
+    @product.destroy
+    render "destroy.json.jb"
+  end
+
 end
