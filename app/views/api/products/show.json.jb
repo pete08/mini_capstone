@@ -1,0 +1,1 @@
+render partial: "partial_products.json.jb", locals: {product: @product}
