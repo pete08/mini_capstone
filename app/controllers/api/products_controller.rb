@@ -10,7 +10,7 @@ class Api::ProductsController < ApplicationController
       name: params[:name], 
       description: params[:description], 
       price: params[:price], 
-      img_url: params[:img_url]
+      image_url: params[:image_url]
   )
     @product.save
     render "create.json.jb"

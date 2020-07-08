@@ -1,7 +1,8 @@
 {name: product.name,
+  id: product.id,
   price: product.price,
   tax: product.tax,
   total_price: "$#{product.price + product.tax}",
   description: product.description,
-  img_url: product.image_url
+  image_url: product.image_url
   }
