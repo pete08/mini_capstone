@@ -11,9 +11,13 @@ class Api::ProductsController < ApplicationController
       description: params[:description], 
       price: params[:price], 
       image_url: params[:image_url]
-  )
-    @product.save
-    render "create.json.jb"
+    )
+    if @product.save
+      render "show.json.jb"
+    else
+      render "error.json.jb"
+    end
+    
   end
 
   def show
