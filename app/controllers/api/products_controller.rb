@@ -12,7 +12,7 @@ class Api::ProductsController < ApplicationController
     # end
 
     
-    # @products = Product.all
+    @products = Product.all
     render "index.json.jb"
   end
 
