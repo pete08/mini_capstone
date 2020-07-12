@@ -4,5 +4,5 @@
   tax: product.tax,
   total_price: "$#{product.price + product.tax}",
   description: product.description,
-  image_url: product.image_url
+  image_url: product.image
   }
