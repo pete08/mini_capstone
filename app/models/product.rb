@@ -5,8 +5,8 @@ class Product < ApplicationRecord
   # Bonus: Do a web search to find out how to add a validation to make sure the image is in a valid file format (like .jpg, .png, etc.) 
 
   belongs_to :supplier
-  has_many :image
-  
+  has_many :images
+
   validates :name, presence: true
   validates :price, numericality: {greater_than: 0}
   validates :description, length: {in:10..500}
