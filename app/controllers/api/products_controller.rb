@@ -7,11 +7,12 @@ class Api::ProductsController < ApplicationController
 
     if current_user
       @products = Product.all
+      render "index.json.jb"
     else
-      @products = []
+      authenticate_user
     end
     
-    render "index.json.jb"
+    
   
   
   end
