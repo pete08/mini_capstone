@@ -1,4 +1,5 @@
 class Api::ProductsController < ApplicationController
+  before_action :authenticate_admin, only:[:create, :update]
 
   def index
     p "*" * 100
@@ -10,18 +11,16 @@ class Api::ProductsController < ApplicationController
       render "index.json.jb"
     else
       authenticate_user
-    end
-    
-    
-  
-  
+    end 
   end
 
   def create
     @product = Product.new( 
       name: params[:name], 
       description: params[:description], 
-      price: params[:price]
+      price: params[:price],
+      inventory: params[:inventory],
+      supplier_id: params[:supplier_id]
     )
     if @product.save
       render "show.json.jb"
@@ -38,10 +37,25 @@ class Api::ProductsController < ApplicationController
 
   def update
     @product = Product.find_by(id: params[:id])
+    p "x" * 90
+    p "@product"
+    p @product
     @product.name = params[:name] || @product.name
+    p "@product.name"
+    p @product.name
+    
     @product.price = params[:price] || @product.price
+    p "@product.price"
+    p @product.price
+    
     @product.description = params[:description] || @product.description
-    @product.save 
+    p "@product.description"
+    p @product.description
+    
+    @product.save
+    p "@product"
+    p @product
+    p "x" * 90
     render "update.json.jb"
   end
 
