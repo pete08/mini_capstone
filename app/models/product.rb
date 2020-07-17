@@ -5,7 +5,8 @@ class Product < ApplicationRecord
   # Bonus: Do a web search to find out how to add a validation to make sure the image is in a valid file format (like .jpg, .png, etc.) 
 
   belongs_to :supplier
-  has_many :category_products #what error if category_product mispelled?
+  has_many :category_products 
+  has_many :categories, through: :category_products
   has_many :images
   has_many :orders
 

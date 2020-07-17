@@ -1,18 +1,31 @@
 class Api::ProductsController < ApplicationController
-  before_action :authenticate_admin, only:[:create, :update]
+  # before_action :authenticate_admin, only:[:create, :update]
+
+  # def index
+  #   p "*" * 100
+  #   p current_user
+  #   p "*" * 100
+
+  #   if current_user
+  #     @products = Product.all
+  #     render "index.json.jb"
+  #   else
+  #     authenticate_user
+  #   end 
+  # end
 
   def index
-    p "*" * 100
-    p current_user
-    p "*" * 100
-
-    if current_user
-      @products = Product.all
-      render "index.json.jb"
+    category = Category.find_by(name: params[:category])
+    category.products
+    if params[:category]
+      @products = category.products
     else
-      authenticate_user
-    end 
+      @products = Product.all
+    end
+    render "index.json.jb"
   end
+
+
 
   def create
     @product = Product.new( 
